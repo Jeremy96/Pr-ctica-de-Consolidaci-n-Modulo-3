@@ -1,19 +1,33 @@
+/**
+ * Se crea una clase producto
+ * @param {String} nombre Nombre del producto
+ * @param {number} precio Precio del Producto
+ */
 class Producto {
     constructor(nombre, precio){
         this.nombre = nombre;
         this.precio = precio;
     }
 }
-
+/**
+ * Clase Carrito que contiene una arreglo para guardar productos
+ * @param {Array} productos Lista de productos
+ */
 class Carrito {
     constructor(){
         this.productos = []
     }
-
+    /**
+     * Función para agregar un producto a la lista productos con el metodo push() que agrega cada producto al final de la lista
+     * @param {Object} producto 
+     */
     agregarProductos = (producto) => {
         this.productos.push(producto);
     }
-
+    /**
+     * Función para calcular el total de la compra del carrito
+     * @returns Mensaje con el total de la compra
+     */
     calcularTotalCompra = () => {
         let total = 0
         for (let i = 0; i < this.productos.length; i++) {
@@ -21,7 +35,9 @@ class Carrito {
         }
         return `Total de la compra: $${total}`
     }
-
+    /**
+     * Funcion que imprime en un alert la lista de productos y el total de la compra
+     */
     mostrarDetalles = () => {
         let mensaje = "Detalles de la compra:\n";
         this.productos.forEach((producto, id) => {
@@ -30,7 +46,9 @@ class Carrito {
         mensaje += this.calcularTotalCompra();
         alert(mensaje)
     }
-
+    /**
+     * Funcion que imprime la boleta final de la compra y vacia el carrito
+     */
     finalizarCompra = () => {
         let mensaje = "- - - - - Supermercado Kwik-E-Mart - - - - -\n";
         mensaje += "Detalles de la compra:\n";
@@ -43,8 +61,9 @@ class Carrito {
         alert(mensaje)
     }
 }
-
+// Variable que se utiliza para cambiar de opcion en el menu principal
 var opcion = ""
+// Se crea el carrito
 const carrito = new Carrito()
 do{
     opcion = Number(prompt("Bienvenido al Kwik-E-Mart: \n1.- Agregar un producto\n2.- Ver total de la compra\n3.- Ver detalles de la compra\n4.- Finalizar compra"))
