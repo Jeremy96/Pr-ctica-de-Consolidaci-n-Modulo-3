@@ -66,14 +66,19 @@ var opcion = ""
 // Se crea el carrito
 const carrito = new Carrito()
 do{
+    //Prompt para escribir una opcion del menu principal
     opcion = Number(prompt("Bienvenido al Kwik-E-Mart: \n1.- Agregar un producto\n2.- Ver total de la compra\n3.- Ver detalles de la compra\n4.- Finalizar compra"))
     switch(opcion){
+        // Agregar Productos
         case 1:
+            // variable para continuar agregando productos s/n
             let continuar = ""
+            // Si continuar es distinto de n se sigue agregando productos
             while(continuar !== "n"){
                 alert("Productos disponibles:\n1.- Leche $1000\n2.- Pan de Molde $2000\n3.- Queso $1200\n4.- Mermelada $890\n5.- Azúcar $1300")    
                 listaProductos = [{nombre : "Leche", precio : 1000}, {nombre : "Pan de Molde", precio : 2000}, {nombre : "Queso", precio : 1200}, {nombre : "Mermelada", precio : 890}, {nombre : "Azúcar", precio : 1300}] 
                 let numProducto = prompt("Ingresa el número del producto que deseas agregar al carrito:")
+                // Se valida si el numero de producto esta entre 1 a 5
                 if (numProducto >=1 && numProducto <=5){
                     let cantProducto = prompt("Ingresa la cantidad de unidades: ")
                     for (let i = 0; i < cantProducto; i++) {
@@ -83,21 +88,27 @@ do{
                 }
                     continuar = prompt("¿Deseas seguir agregando productos? (s/n)")
                 }else{
+                    // en caso de que el numero de producto no exista se envia alert con el error
                     alert("El número de producto ingresado no se encuentra en nuestra base de datos, por favor ingrese un número del 1 al 5")
                 }
             }
             break;
+        // Calcular Total de compra
         case 2:
             alert(carrito.calcularTotalCompra())
             break;
+        // Mostrar Detalles de la compra
         case 3:
             carrito.mostrarDetalles()
             break;
+        // Finaliza la compra
         case 4:
             carrito.finalizarCompra()
             break;
+        // En caso de cualquier otra opcion manda error
         default:
             alert("Opción incorrecta!!!")
     }
 }
+// Continua el ciclo si la variable opcion el distinta de 4
 while(opcion!=4)
